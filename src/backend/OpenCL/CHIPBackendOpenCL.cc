@@ -234,7 +234,7 @@ annotateIndirectPointers(const CHIPContextOpenCL &Ctx,
   // If we have determined that the module does not have indirect
   // global memory accesses (IGBAs; see HipIGBADetectorPass), we may
   // skip the annotation.
-  if (!Kernel.getModule()->getInfo().MayHaveIGBAs)
+  if (Kernel.getModule()->getInfo().HasNoIGBAs)
     return nullptr;
 
   cl_kernel KernelAPIHandle = Kernel.get()->get();
